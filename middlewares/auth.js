@@ -11,11 +11,11 @@ module.exports = (req, res, next) => {
   try {
     const token = req.cookies.jwt;
     if (!token) {
-      throw new UnauthorizedError(AUTH_MSG);
+      return next(new UnauthorizedError(AUTH_MSG));
     }
     payload = jwt.verify(token, NODE_ENV === MODE_PRODUCTION ? JWT_SECRET : DEV_KEY);
   } catch (err) {
-    throw new UnauthorizedError(AUTH_MSG);
+    return next(UnauthorizedError(AUTH_MSG));
   }
   req.user = payload;
   return next();

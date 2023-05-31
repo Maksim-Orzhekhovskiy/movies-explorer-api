@@ -34,7 +34,7 @@ const createMovie = (req, res, next) => {
   const owner = req.user._id;
 
   Movie.create({ ...req.body, owner })
-    .then((movie) => res.send(movie))
+    .then((movie) => res.status(201).send(movie))
     .catch((err) => {
       if (err instanceof ValidationError) {
         next(new IncorrectDataError(MOVIE_BAD_DATA_MSG));
@@ -56,7 +56,7 @@ const deleteMovie = (req, res, next) => {
         throw new ForbiddenError(MOVIE_FORBIDDEN_MSG);
       }
 
-      return Movie.deleteOne(movie);
+      movie.deleteOne();
     })
     .then((movie) => res.send(movie))
     .catch((err) => {

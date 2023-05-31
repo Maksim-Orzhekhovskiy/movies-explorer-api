@@ -87,8 +87,7 @@ const login = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       })
-        .send({ message: SIGNIN_MSG })
-        .end();
+        .send({ message: SIGNIN_MSG });
     })
     .catch(next);
 };
