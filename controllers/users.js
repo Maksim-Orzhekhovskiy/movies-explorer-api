@@ -94,7 +94,10 @@ const login = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  res.clearCookie('jwt');
+  res.clearCookie('jwt', {
+    sameSite: 'none',
+    secure: true,
+  });
   res.send({ message: SIGNOUT_MSG });
 };
 
