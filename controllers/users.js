@@ -86,7 +86,6 @@ const login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
-        secure: true,
       })
         .send({ message: SIGNIN_MSG });
     })
@@ -96,7 +95,6 @@ const login = (req, res, next) => {
 const logout = (req, res) => {
   res.clearCookie('jwt', {
     sameSite: 'none',
-    secure: true,
   });
   res.send({ message: SIGNOUT_MSG });
 };
