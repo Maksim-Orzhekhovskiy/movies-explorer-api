@@ -21,7 +21,7 @@ const app = express();
 
 app.use(cors({
   credentials: true,
-  origin: true,
+  origin: 'https://diploma.films.nomoredomains.rocks',
 }));
 app.use(rateLimiter);
 app.use(helmet());
