@@ -20,8 +20,8 @@ const { DATABASE_URL, DEFAULT_PORT } = require('./utils/config');
 const app = express();
 
 app.use(cors({
-  credentials: 'include',
-  origin: 'http://diploma.films.nomoredomains.rocks',
+  credentials: false,
+  origin: 'https://diploma.films.nomoredomains.rocks',
 }));
 app.use(rateLimiter);
 app.use(helmet());
